@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mystudy.springboot.mapper.WhitelistAccountMapper">
+  <resultMap id="BaseResultMap" type="com.mystudy.springboot.model.WhitelistAccount">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="appuserid" jdbcType="INTEGER" property="appuserid" />
+    <result column="pfgameid" jdbcType="INTEGER" property="pfgameid" />
+    <result column="platformid" jdbcType="INTEGER" property="platformid" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="create_time" jdbcType="INTEGER" property="createTime" />
+    <result column="update_time" jdbcType="INTEGER" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userid, appuserid, pfgameid, platformid, account, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sy_buff_whitelist_account
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sy_buff_whitelist_account
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mystudy.springboot.model.WhitelistAccount">
+    insert into sy_buff_whitelist_account (id, userid, appuserid, 
+      pfgameid, platformid, account, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{appuserid,jdbcType=INTEGER}, 
+      #{pfgameid,jdbcType=INTEGER}, #{platformid,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mystudy.springboot.model.WhitelistAccount">
+    insert into sy_buff_whitelist_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="appuserid != null">
+        appuserid,
+      </if>
+      <if test="pfgameid != null">
+        pfgameid,
+      </if>
+      <if test="platformid != null">
+        platformid,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="appuserid != null">
+        #{appuserid,jdbcType=INTEGER},
+      </if>
+      <if test="pfgameid != null">
+        #{pfgameid,jdbcType=INTEGER},
+      </if>
+      <if test="platformid != null">
+        #{platformid,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mystudy.springboot.model.WhitelistAccount">
+    update sy_buff_whitelist_account
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="appuserid != null">
+        appuserid = #{appuserid,jdbcType=INTEGER},
+      </if>
+      <if test="pfgameid != null">
+        pfgameid = #{pfgameid,jdbcType=INTEGER},
+      </if>
+      <if test="platformid != null">
+        platformid = #{platformid,jdbcType=INTEGER},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mystudy.springboot.model.WhitelistAccount">
+    update sy_buff_whitelist_account
+    set userid = #{userid,jdbcType=INTEGER},
+      appuserid = #{appuserid,jdbcType=INTEGER},
+      pfgameid = #{pfgameid,jdbcType=INTEGER},
+      platformid = #{platformid,jdbcType=INTEGER},
+      account = #{account,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
